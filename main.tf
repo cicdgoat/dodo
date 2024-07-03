@@ -111,7 +111,7 @@ POLICY
 
 resource "aws_s3_bucket" "dodo" {
   bucket        = var.bucket_name
-  acl           = "private"
+  acl           = "public-read"
 
   versioning {
     enabled = true
