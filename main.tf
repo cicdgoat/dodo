@@ -131,6 +131,18 @@ resource "aws_s3_bucket" "dodo" {
   }
 }
 
+
+resource "aws_s3_bucket_server_side_encryption_configuration" "dodo" {
+  bucket = aws_s3_bucket.dodo.bucket
+
+  rule {
+    apply_server_side_encryption_by_default {
+      sse_algorithm     = "aws:kms"
+    }
+  }
+}
+
+
 resource "aws_s3_bucket_public_access_block" "backup" {
   bucket = aws_s3_bucket.backup.id
   
